@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SW505 – Documentación de casos de prueba</title>
+<style>
+:root{--bg:#f4f6fb;--card:#fff;--ink:#14214d;--muted:#5b6785;--line:#d9dfee;--head:#14214d;--ok:#1b7f3b;--okbg:#e3f5e8;--acc:#2a5298;--warn:#fff4e0;--warnline:#e08a00}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1424;--card:#171e36;--ink:#e8ecf8;--muted:#9aa6c7;--line:#2b3558;--head:#2a5298;--ok:#7fdc9b;--okbg:#14301f;--acc:#8fb4ff;--warn:#2b2412;--warnline:#e0a030}}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5}
+main{max-width:1100px;margin:0 auto;padding:28px 18px 48px}
+header{background:var(--head);color:#fff;border-radius:14px;padding:24px 28px;margin-bottom:22px}
+header h1{margin:0 0 6px;font-size:1.5rem} header p{margin:2px 0;opacity:.9;font-size:.95rem}
+h2{margin:30px 0 12px;font-size:1.2rem;border-left:5px solid var(--acc);padding-left:10px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat b{display:block;font-size:1.7rem;color:var(--ok)} .stat span{color:var(--muted);font-size:.85rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(440px,1fr));gap:16px}
+@media(max-width:520px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;overflow-x:auto}
+.card h3{margin:0 0 10px;font-size:1.05rem}
+table{width:100%;border-collapse:collapse;font-size:.9rem}
+th,td{border:1px solid var(--line);padding:6px 10px;text-align:left;vertical-align:top}
+th{background:var(--head);color:#fff} td:first-child{width:38%;font-weight:600;color:var(--muted)}
+code{background:rgba(120,140,200,.16);padding:1px 5px;border-radius:4px;font-size:.85em;word-break:break-word}
+.ok{background:var(--okbg);color:var(--ok);font-weight:700;padding:2px 10px;border-radius:999px}
+.tag{font-size:.7rem;font-weight:600;padding:2px 8px;border-radius:999px;background:var(--line);color:var(--muted);vertical-align:middle;margin-left:6px}
+.tag.extra{background:var(--warn);color:var(--warnline);border:1px solid var(--warnline)}
+.answer{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--warnline);border-radius:12px;padding:16px 20px}
+.answer p{margin:6px 0}
+.resumen td:first-child{width:auto}
+</style></head><body><main>
+<header>
+ <h1>SW505 – Laboratorio: Pruebas Unitarias</h1>
+ <p>Universidad Nacional de Ingeniería · EPIS – FIIS · Construcción de Software I</p>
+ <p>Docente: Mg. Juan Luis Herencia Guerra · Alumno: Fabri</p>
+</header>
+
+<h2>Resumen de la ejecución</h2>
+<div class="stats">
+ <div class="stat"><b>9 / 9</b><span>pruebas aprobadas (0 fallidas)</span></div>
+ <div class="stat"><b>90%</b><span>cobertura de <code>calculadora.py</code></span></div>
+ <div class="stat"><b>9 / 10</b><span>sentencias cubiertas (sin cubrir: línea 11)</span></div>
+ <div class="stat"><b>5</b><span>casos documentados (CP-001 a CP-005)</span></div>
+</div>
+
+<h2>Tabla de documentación de casos de prueba</h2>
+<div class="grid">
+<section class="card">
+  <h3>CP-001 </h3>
+  <table>
+    <tr><th>Campo</th><th>Valor</th></tr>
+    <tr><td>ID</td><td>CP-001</td></tr>
+    <tr><td>Tipo</td><td>Camino Normal</td></tr>
+    <tr><td>Descripción</td><td>Sumar dos enteros positivos</td></tr>
+    <tr><td>Precondición</td><td>Ninguna</td></tr>
+    <tr><td>Datos de entrada</td><td><code>a=2, b=3</code></td></tr>
+    <tr><td>Resultado esperado</td><td>5</td></tr>
+    <tr><td>Resultado actual</td><td>5</td></tr>
+    <tr><td>Estado</td><td><span class="ok">Aprobado</span></td></tr>
+    <tr><td>Prueba en pytest</td><td><code>test_sumar_positivos</code></td></tr>
+  </table>
+</section>
+<section class="card">
+  <h3>CP-002 </h3>
+  <table>
+    <tr><th>Campo</th><th>Valor</th></tr>
+    <tr><td>ID</td><td>CP-002</td></tr>
+    <tr><td>Tipo</td><td>Valor Límite</td></tr>
+    <tr><td>Descripción</td><td>Verificar edad exactamente en el límite (18) y justo debajo (17)</td></tr>
+    <tr><td>Precondición</td><td>Ninguna</td></tr>
+    <tr><td>Datos de entrada</td><td><code>edad=18 ; edad=17</code></td></tr>
+    <tr><td>Resultado esperado</td><td>True ; False</td></tr>
+    <tr><td>Resultado actual</td><td>True ; False</td></tr>
+    <tr><td>Estado</td><td><span class="ok">Aprobado</span></td></tr>
+    <tr><td>Prueba en pytest</td><td><code>test_mayor_edad_limite_inferior<br>test_menor_edad_limite_superior</code></td></tr>
+  </table>
+</section>
+<section class="card">
+  <h3>CP-003 </h3>
+  <table>
+    <tr><th>Campo</th><th>Valor</th></tr>
+    <tr><td>ID</td><td>CP-003</td></tr>
+    <tr><td>Tipo</td><td>Excepción</td></tr>
+    <tr><td>Descripción</td><td>Dividir por cero debe lanzar ValueError</td></tr>
+    <tr><td>Precondición</td><td>Ninguna</td></tr>
+    <tr><td>Datos de entrada</td><td><code>a=10, b=0</code></td></tr>
+    <tr><td>Resultado esperado</td><td>ValueError con mensaje "No se puede dividir por cero"</td></tr>
+    <tr><td>Resultado actual</td><td>ValueError con mensaje "No se puede dividir por cero"</td></tr>
+    <tr><td>Estado</td><td><span class="ok">Aprobado</span></td></tr>
+    <tr><td>Prueba en pytest</td><td><code>test_dividir_por_cero</code></td></tr>
+  </table>
+</section>
+<section class="card">
+  <h3>CP-004 </h3>
+  <table>
+    <tr><th>Campo</th><th>Valor</th></tr>
+    <tr><td>ID</td><td>CP-004</td></tr>
+    <tr><td>Tipo</td><td>Entrada Inválida</td></tr>
+    <tr><td>Descripción</td><td>Edad negativa debe lanzar ValueError</td></tr>
+    <tr><td>Precondición</td><td>Ninguna</td></tr>
+    <tr><td>Datos de entrada</td><td><code>edad=-5</code></td></tr>
+    <tr><td>Resultado esperado</td><td>ValueError con mensaje "La edad no puede ser negativa"</td></tr>
+    <tr><td>Resultado actual</td><td>ValueError con mensaje "La edad no puede ser negativa"</td></tr>
+    <tr><td>Estado</td><td><span class="ok">Aprobado</span></td></tr>
+    <tr><td>Prueba en pytest</td><td><code>test_edad_negativa</code></td></tr>
+  </table>
+</section>
+<section class="card">
+  <h3>CP-005 </h3>
+  <table>
+    <tr><th>Campo</th><th>Valor</th></tr>
+    <tr><td>ID</td><td>CP-005</td></tr>
+    <tr><td>Tipo</td><td>Parametrizada (múltiples entradas)</td></tr>
+    <tr><td>Descripción</td><td>Sumar varios pares de números</td></tr>
+    <tr><td>Precondición</td><td>Ninguna</td></tr>
+    <tr><td>Datos de entrada</td><td><code>(1,1)→2; (-1,1)→0; (0,0)→0; (100,200)→300</code></td></tr>
+    <tr><td>Resultado esperado</td><td>Los valores indicados: 2; 0; 0; 300</td></tr>
+    <tr><td>Resultado actual</td><td>2; 0; 0; 300 (los 4 casos coinciden)</td></tr>
+    <tr><td>Estado</td><td><span class="ok">Aprobado</span></td></tr>
+    <tr><td>Prueba en pytest</td><td><code>test_sumar_parametrizado (4 casos)</code></td></tr>
+  </table>
+</section>
+</div>
+
+<h2>Pregunta 5</h2>
+<div class="answer">
+ <p><b>¿Qué línea de <code>calculadora.py</code> quedaría sin cubrir si se elimina el test de edad negativa?</b></p>
+ <p>1. Quedaría sin cubrir la <b>línea 18</b>: <code>raise ValueError("La edad no puede ser negativa")</code>.<br>
+ 2. Sin <code>test_edad_negativa</code>, <code>pytest --cov</code> baja de 90% a <b>80%</b> y <i>Missing</i> pasa de <code>11</code> a <code>11, 18</code>.<br>
+ 3. En <code>htmlcov/index.html</code> la línea 18 se pondría en rojo (la 11, <code>return a / b</code>, ya está sin cubrir porque ningún test divide con b ≠ 0).<br>
+ 4. Ningún test enviaría una edad menor que 0, así que nunca se entraría al <code>if edad &lt; 0</code>.</p>
+</div>
+</main></body></html>

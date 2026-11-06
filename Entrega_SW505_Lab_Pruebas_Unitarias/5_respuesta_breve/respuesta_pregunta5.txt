@@ -1,0 +1,7 @@
+Pregunta: ¿Qué línea de calculadora.py quedaría sin cubrir si se elimina el test de edad negativa? Justifique usando el reporte de cobertura.
+
+Respuesta:
+1. Quedaría sin cubrir la línea 18: raise ValueError("La edad no puede ser negativa").
+2. Sin test_edad_negativa, el reporte de cobertura baja de 90% a 80% y "Missing" pasa de 11 a 11, 18.
+3. En htmlcov/index.html la línea 18 aparecería en rojo (la 11, return a / b, ya estaba sin cubrir).
+4. Ningún test envía una edad menor que 0, por eso nunca se entra al if edad < 0.
